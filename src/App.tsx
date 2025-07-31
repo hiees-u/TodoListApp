@@ -1,12 +1,9 @@
-import { useState } from 'react'
 import './App.css'
 import TodoList from './pages/TodoList'
 import { Route, Routes } from 'react-router-dom'
 import TodoDetail from './pages/TodoDetail'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <Routes>
