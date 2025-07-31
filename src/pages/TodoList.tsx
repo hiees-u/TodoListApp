@@ -40,6 +40,9 @@ const TodoList = () => {
     dispatch(addTodo(newTodo));
     setMessage('Add todo succes!!')
     setTitle('');
+    setTimeout(() => {
+      setMessage('');
+    }, 5000);
   };
 
   return (
