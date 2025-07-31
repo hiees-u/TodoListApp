@@ -8,6 +8,5 @@ export const store = configureStore({
   },
 });
 
-// Cho TypeScript biết dạng của state và dispatch
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
