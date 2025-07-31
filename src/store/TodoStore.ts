@@ -12,7 +12,6 @@ interface TodoState {
 }
 
 const initialState: TodoState = {
-  // todos: [],
   todos: [
     { id: 1, title: 'Learn Redux', completed: false },
     { id: 2, title: 'Practice React', completed: true },
