@@ -8,6 +8,7 @@ import type { RootState } from '@/store/Store';
 import { removeTodo, toggleTodo } from '@/store/TodoStore';
 
 import styles from '@/styles/TodoDetail.module.scss';
+import ROUTE_PATHS from '@/routes/paths';
 
 
 const TodoDetail = () => {
@@ -28,7 +29,7 @@ const TodoDetail = () => {
     const confirmed = window.confirm("Are you sure you want to delete?");
     if (confirmed) {
       dispatch(removeTodo(id));
-      navigate('/');
+      navigate(ROUTE_PATHS.TASK_LIST);
     }
   }
 
@@ -42,7 +43,7 @@ const TodoDetail = () => {
       <p><strong>Status:</strong> {todo.completed ? '✅ Done' : '⏳ Processing'}</p>
       {!todo.completed && <p><button className={styles.todoActiveButton} onClick={() => handleToggle(todo.id)}>COMPLETE ✅</button></p>}
       {todo.completed && <p><button className={styles.todoRemoveButton} onClick={() => handleRemove(todo.id)}>REMOVE 🗑️</button></p>}
-      <Link to="/">← Back to list</Link>
+      <Link to={ROUTE_PATHS.TASK_LIST}>← Back to list</Link>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 import * as path from 'path'
 
 export default defineConfig({
-  base: '/TodoListApp/', // <- tên repo
+  base: '/TodoListApp/',
   plugins: [react()],
   resolve: {
     alias: {

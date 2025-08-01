@@ -7,7 +7,7 @@ import { useState } from 'react';
 import type { RootState } from '@/store/Store';
 import { addTodo } from '@/store/TodoStore';
 import styles from '@/styles/TodoList.module.scss';
-
+import ROUTE_PATHS from '@/routes/paths'
 
 const TodoList = () => {
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ const TodoList = () => {
       <ul className={styles.todoList}>
         {todos.map((todo) => (
           <li key={todo.id} className={styles.todoItem}>
-            <Link to={`/todo/${todo.id}`}>
+            <Link to={ROUTE_PATHS.TASK_DETAIL(todo.id)}>
               {todo.title} {todo.completed ? '✅' : '⏳'}
             </Link>
           </li>
