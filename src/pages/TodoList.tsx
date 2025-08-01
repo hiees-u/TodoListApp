@@ -52,7 +52,7 @@ const TodoList = () => {
       <ul className={styles.todoList}>
         {todos.map((todo) => (
           <li key={todo.id} className={styles.todoItem}>
-            <Link to={ROUTE_PATHS.TASK_DETAIL(todo.id)}>
+            <Link to={ROUTE_PATHS.TASK_DETAIL(todo.id.toString())}>
               {todo.title} {todo.completed ? '✅' : '⏳'}
             </Link>
           </li>
