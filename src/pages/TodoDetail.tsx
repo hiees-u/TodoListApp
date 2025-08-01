@@ -2,9 +2,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import type { RootState } from '../store/Store';
 import { useDispatch } from 'react-redux';
-import { removeTodo, toggleTodo } from '../store/TodoStore';
+
+import type { RootState } from '@/store/Store';
+import { removeTodo, toggleTodo } from '@/store/TodoStore';
+
+import styles from '@/styles/TodoDetail.module.scss';
 
 
 const TodoDetail = () => {
@@ -14,7 +17,7 @@ const TodoDetail = () => {
   const navigate = useNavigate();
 
   const todo = useSelector((state: RootState) =>
-    state.todo.todos.find((t) => t.id === todoId)
+    state.todo.todos.find((t:any) => t.id === todoId)
   );
 
   const handleToggle = (id: number) => {
@@ -37,8 +40,8 @@ const TodoDetail = () => {
       <p><strong>ID:</strong> {todo.id}</p>
       <p><strong>Title:</strong> {todo.title}</p>
       <p><strong>Status:</strong> {todo.completed ? '✅ Done' : '⏳ Processing'}</p>
-      {!todo.completed && <p><button onClick={() => handleToggle(todo.id)}>COMPLETE ✅</button></p>}
-      {todo.completed && <p><button onClick={() => handleRemove(todo.id)}>REMOVE 🗑️</button></p>}
+      {!todo.completed && <p><button className={styles.todoActiveButton} onClick={() => handleToggle(todo.id)}>COMPLETE ✅</button></p>}
+      {todo.completed && <p><button className={styles.todoRemoveButton} onClick={() => handleRemove(todo.id)}>REMOVE 🗑️</button></p>}
       <Link to="/">← Back to list</Link>
     </div>
   );

@@ -1,7 +1,8 @@
-import './App.css'
-import TodoList from './pages/TodoList'
 import { Route, Routes } from 'react-router-dom'
-import TodoDetail from './pages/TodoDetail'
+
+import '@/App.css'
+import TodoList from '@/pages/TodoList'
+import TodoDetail from '@/pages/TodoDetail'
 
 function App() {
   return (

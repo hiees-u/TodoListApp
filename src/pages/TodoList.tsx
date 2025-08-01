@@ -1,11 +1,12 @@
 // src/components/TodoList.tsx
 import { useSelector } from 'react-redux';
-import type { RootState } from '../store/Store';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { addTodo } from '../store/TodoStore';
-import styles from '../styles/TodoList.module.scss';
+
+import type { RootState } from '@/store/Store';
+import { addTodo } from '@/store/TodoStore';
+import styles from '@/styles/TodoList.module.scss';
 
 
 const TodoList = () => {
