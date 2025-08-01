@@ -1,12 +1,13 @@
 // src/components/TodoList.tsx
 import { useSelector } from 'react-redux';
-import type { RootState } from '../store/Store';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { addTodo } from '../store/TodoStore';
-import styles from '../styles/TodoList.module.scss';
 
+import type { RootState } from '@/store/Store';
+import { addTodo } from '@/store/TodoStore';
+import styles from '@/styles/TodoList.module.scss';
+import ROUTE_PATHS from '@/routes/paths'
 
 const TodoList = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,9 @@ const TodoList = () => {
     dispatch(addTodo(newTodo));
     setMessage('Add todo succes!!')
     setTitle('');
+    setTimeout(() => {
+      setMessage('');
+    }, 5000);
   };
 
   return (
@@ -48,8 +52,8 @@ const TodoList = () => {
       <ul className={styles.todoList}>
         {todos.map((todo) => (
           <li key={todo.id} className={styles.todoItem}>
-            <Link to={`/todo/${todo.id}`}>
-              {todo.title} {todo.completed ? '✅' : '❌'}
+            <Link to={ROUTE_PATHS.TASK_DETAIL(todo.id.toString())}>
+              {todo.title} {todo.completed ? '✅' : '⏳'}
             </Link>
           </li>
         ))}

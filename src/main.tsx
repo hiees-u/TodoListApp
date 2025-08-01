@@ -1,9 +1,9 @@
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import { createRoot } from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
-import App from './App.tsx'
-import { store } from './store/Store'
 import { Provider } from 'react-redux';
+
+import App from '@/App.tsx';
+import { store } from '@/store/Store';
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>

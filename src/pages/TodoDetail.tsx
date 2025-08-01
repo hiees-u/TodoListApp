@@ -2,10 +2,13 @@
 import { useNavigate } from 'react-router-dom';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import type { RootState } from '../store/Store';
 import { useDispatch } from 'react-redux';
-import { removeTodo, toggleTodo } from '../store/TodoStore';
 
+import type { RootState } from '@/store/Store';
+import { removeTodo, toggleTodo } from '@/store/TodoStore';
+
+import styles from '@/styles/TodoDetail.module.scss';
+import ROUTE_PATHS from '@/routes/paths';
 
 const TodoDetail = () => {
   const { id } = useParams();
@@ -14,32 +17,50 @@ const TodoDetail = () => {
   const navigate = useNavigate();
 
   const todo = useSelector((state: RootState) =>
-    state.todo.todos.find((t) => t.id === todoId)
+    state.todo.todos.find((t: any) => t.id === todoId),
   );
 
   const handleToggle = (id: number) => {
     dispatch(toggleTodo(id));
-  }
+  };
 
   const handleRemove = (id: number) => {
-    const confirmed = window.confirm("Bạn có chắc muốn xoá?");
+    const confirmed = window.confirm('Are you sure you want to delete?');
     if (confirmed) {
       dispatch(removeTodo(id));
-      navigate('/');
+      navigate(ROUTE_PATHS.TASK_LIST);
     }
-  }
+  };
 
   if (!todo) return <div>Todo not found</div>;
 
   return (
     <div>
       <h2>Todo Detail</h2>
-      <p><strong>ID:</strong> {todo.id}</p>
-      <p><strong>Title:</strong> {todo.title}</p>
-      <p><strong>Status:</strong> {todo.completed ? '✅ Done' : '❌ Not done'}</p>
-      {!todo.completed && <p><button onClick={() => handleToggle(todo.id)}>COMPLETE ✅</button></p>}
-      {todo.completed && <p><button onClick={() => handleRemove(todo.id)}>REMOVE 🗑️</button></p>}
-      <Link to="/">← Back to list</Link>
+      <p>
+        <strong>ID:</strong> {todo.id}
+      </p>
+      <p>
+        <strong>Title:</strong> {todo.title}
+      </p>
+      <p>
+        <strong>Status:</strong> {todo.completed ? '✅ Done' : '⏳ Processing'}
+      </p>
+      {!todo.completed && (
+        <p>
+          <button className={styles.todoActiveButton} onClick={() => handleToggle(todo.id)}>
+            COMPLETE ✅
+          </button>
+        </p>
+      )}
+      {todo.completed && (
+        <p>
+          <button className={styles.todoRemoveButton} onClick={() => handleRemove(todo.id)}>
+            REMOVE 🗑️
+          </button>
+        </p>
+      )}
+      <Link to={ROUTE_PATHS.TASK_LIST}>← Back to list</Link>
     </div>
   );
 };
