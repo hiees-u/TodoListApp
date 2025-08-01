@@ -36,7 +36,7 @@ const TodoDetail = () => {
       <h2>Todo Detail</h2>
       <p><strong>ID:</strong> {todo.id}</p>
       <p><strong>Title:</strong> {todo.title}</p>
-      <p><strong>Status:</strong> {todo.completed ? '✅ Done' : '❌ Not done'}</p>
+      <p><strong>Status:</strong> {todo.completed ? '✅ Done' : '⏳ Processing'}</p>
       {!todo.completed && <p><button onClick={() => handleToggle(todo.id)}>COMPLETE ✅</button></p>}
       {todo.completed && <p><button onClick={() => handleRemove(todo.id)}>REMOVE 🗑️</button></p>}
       <Link to="/">← Back to list</Link>

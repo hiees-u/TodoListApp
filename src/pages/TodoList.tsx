@@ -52,7 +52,7 @@ const TodoList = () => {
         {todos.map((todo) => (
           <li key={todo.id} className={styles.todoItem}>
             <Link to={`/todo/${todo.id}`}>
-              {todo.title} {todo.completed ? '✅' : '❌'}
+              {todo.title} {todo.completed ? '✅' : '⏳'}
             </Link>
           </li>
         ))}
