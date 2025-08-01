@@ -22,7 +22,7 @@ const TodoDetail = () => {
   }
 
   const handleRemove = (id: number) => {
-    const confirmed = window.confirm("Bạn có chắc muốn xoá?");
+    const confirmed = window.confirm("Are you sure you want to delete?");
     if (confirmed) {
       dispatch(removeTodo(id));
       navigate('/');
